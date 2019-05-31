@@ -1,17 +1,10 @@
-
-import com.zking.model.User;
-
 import com.zking.util.RedisTemplateUtil;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import redis.clients.jedis.Jedis;
 
-import javax.annotation.Resource;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Set;
 
 
