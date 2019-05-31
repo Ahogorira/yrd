@@ -161,9 +161,9 @@
         <!--使用shiro的内置过滤器拦截资源-->
         <property name="filterChainDefinitions">
             <value>
-                /login.jsp=anon<!--界面放行-->
+                <!--/login.jsp=anon&lt;!&ndash;界面放行&ndash;&gt;
                 /login=anon
-                /**=authc <!--所有资源都要进行认证-->
+                /**=authc &lt;!&ndash;所有资源都要进行认证&ndash;&gt;-->
             </value>
         </property>
         <!--修改shiro的默认登陆-->
@@ -182,6 +182,20 @@
     </bean>
 
 
-
+    <!--配置multipartResolver(文件上传使用)-->
+    <!--配置文件上传解析器-->
+    <bean id="multipartResolver" 
+          class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <!--请求的编码-->
+        <property name="defaultEncoding" value="UTF-8"></property>
+        <!--设定文件上传的Max大小(字节)-->
+        <property name="maxUploadSize" value="10485760"></property>
+        <!--设定文件上传时写入内存的最大值，小于最大值将不会生成临时文件，默认10240-->
+        <property name="maxInMemorySize" value="40960"></property>
+        <!--延迟文件解析，以便捕获文件大小异常-->
+        <property name="resolveLazily" value="true"></property>
+        <!--指定上传文件的临时文件夹，请在项目中创建好目录-->
+        <property name="uploadTempDir" value="images"></property>
+    </bean>
 
 </beans>

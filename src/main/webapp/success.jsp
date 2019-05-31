@@ -11,6 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-来了
+来了<br>
+${url}
+<img src="images/${url}" alt="图片">
 </body>
 </html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.LccpDao">
+    <insert id="addLccp" parameterType="lccp" useGeneratedKeys="true" keyProperty="lcid">
+        insert into tb_lccp(lcname,lcv,lctime,lcmoney,lcimg)
+        values(#{lccp.lcname},#{lccp.lcv},#{lccp.lctime},#{lccp.lcmoney},#{lccp.lcimg})
+    </insert>
+
+    <delete id="delLccp">
+        delete from tb_lccp where lcid=#{lcid}
+    </delete>
+
+    <update id="updateLccp" parameterType="lccp">
+        update tb_lccp set lcname=#{lccp.lcname},lcv=#{lccp.lcv},lctime=#{lccp.lctime},lcmoney=#{lccp.lcmoney},lcimg=#{lccp.lcimg}
+        where lcid=#{lccp.lcid}
+    </update>
+
+    <select id="getAllLccp" resultType="lccp">
+        select * from tb_lccp
+    </select>
+
+    <select id="getLccpByid" resultType="lccp">
+        select * from tb_lccp where lcid=#{lcid}
+    </select>
+
+</mapper>
