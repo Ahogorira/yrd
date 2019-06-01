@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.LoanDao">
+    <!--<insert id="addLccp" parameterType="loan" useGeneratedKeys="true" keyProperty="lcid">
+        insert into tb_lccp(money,lfq,lzt,yid,uid,sqtime,shtime)
+        values(#{loan.money},#{loan.lfq},#{loan.lzt},#{loan.yid},#{loan.uid},,#{loan.sqtime},#{loan.shtime})
+    </insert>-->
+
+
+    <select id="getLoanBysh" resultType="loan">
+        select * from tb_loan where lzt=2;
+    </select>
+
+</mapper>

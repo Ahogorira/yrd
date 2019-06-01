@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.HkDao">
+    <insert id="addHk" parameterType="hk" useGeneratedKeys="true" keyProperty="lcid">
+        insert into tb_lccp(uid,jkfq,money,hkfq,hkmoney,hktime)
+        values(#{hk.uid},#{hk.jkfq},#{hk.money},#{hk.hkfq},#{hk.hkMoney},#{hk.hktime})
+    </insert>
+
+    <select id="getHkByUid" resultType="hk">
+        select * from tb_hk where uid=#{uid}
+    </select>
+
+</mapper>

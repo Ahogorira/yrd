@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.LcShopDao">
+    <insert id="addLcShopDao" parameterType="lcshop" useGeneratedKeys="true" keyProperty="lsid">
+        insert into tb_lcshop(lsmoney,lssy,uid,lcid)
+        values(#{lcShop.lsMoney},#{lcShop.lssy},#{lcShop.uid},#{lcShop.lcid})
+    </insert>
+
+    <select id="getLcShopByUid" resultType="lcshop">
+        select * from tb_lcshop where uid=#{uid}
+    </select>
+
+    <select id="getLcShopByLcid" resultType="lcshop">
+        select * from tb_lcshop where lcid=#{lcid}
+    </select>
+
+</mapper>

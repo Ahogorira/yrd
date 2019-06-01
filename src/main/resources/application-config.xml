@@ -33,35 +33,35 @@
     <context:property-placeholder location="classpath*:db.properties,classpath*:redis.properties"></context:property-placeholder>
 
     <!--5,配置数据库连接池(c3p0)-->
-   <!-- <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        &lt;!&ndash;5.1,配置数据源参数&ndash;&gt;
+    <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+        <!--5.1,配置数据源参数-->
         <property name="jdbcUrl" value="${db.url}"></property>
         <property name="driverClass" value="${db.driverClass}"></property>
         <property name="user" value="${db.username}"></property>
         <property name="password" value="${db.pwd}"></property>
-        &lt;!&ndash;5.2，配置连接池参数&ndash;&gt;
+        <!--5.2，配置连接池参数-->
         <property name="initialPoolSize" value="${pool.initSize}"></property>
         <property name="maxPoolSize" value="${pool.maxSize}"></property>
-    </bean>-->
+    </bean>
 
     <!--5,配置数据库连接池 druid-->
-    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
-        <!-- 数据库基本信息配置-->
+    <!--<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource" init-method="init" destroy-method="close">
+        &lt;!&ndash; 数据库基本信息配置&ndash;&gt;
         <property name="driverClassName" value="${db.driverClass}" />
         <property name="url" value="${db.url}" />
         <property name="username" value="${db.username}" />
         <property name="password" value="${db.pwd}" />
         <property name="filters" value="${db.filters}" />
-        <!-- 最大并发连接数 -->
+        &lt;!&ndash; 最大并发连接数 &ndash;&gt;
         <property name="maxActive" value="${druid.maxActive}" />
-        <!-- 初始化连接数量 -->
+        &lt;!&ndash; 初始化连接数量 &ndash;&gt;
         <property name="initialSize" value="${druid.initialSize}" />
-        <!-- 最小空闲连接数 -->
+        &lt;!&ndash; 最小空闲连接数 &ndash;&gt;
         <property name="minIdle" value="${druid.minIdle}" />
-        <!-- 配置获取连接等待超时的时间 -->
+        &lt;!&ndash; 配置获取连接等待超时的时间 &ndash;&gt;
         <property name="maxWait" value="${druid.maxWait}" />
 
-    </bean>
+    </bean>-->
 
     <!--6，配置SqlSessionFactory-->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -161,9 +161,9 @@
         <!--使用shiro的内置过滤器拦截资源-->
         <property name="filterChainDefinitions">
             <value>
-                <!--/login.jsp=anon&lt;!&ndash;界面放行&ndash;&gt;
+                /login.jsp=anon<!--界面放行-->
                 /login=anon
-                /**=authc &lt;!&ndash;所有资源都要进行认证&ndash;&gt;-->
+                /**=anon <!--所有资源都要进行认证authc-->
             </value>
         </property>
         <!--修改shiro的默认登陆-->
