@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zking.dao.YqDao">
+    <insert id="addYq" parameterType="yq" useGeneratedKeys="true" keyProperty="yqid">
+        insert into tb_yq(uid,yqtime,yqover,yqmoney,yqlx,yqfq,yqzt)
+        values(#{yq.uid},#{yq.yqtime},#{yq.yqover},#{yq.yqmoney},#{yq.yqlx},#{yq.yqfq},#{yq.yqzt})
+    </insert>
+
+    <select id="getYqAllw" resultType="yq">
+        select * from tb_yq where yqzt=2;
+    </select>
+
+    <select id="getYqAll" resultType="yq">
+        select * from tb_yq;
+    </select>
+
+    <update id="updateYq">
+        update tb_yq set yqzt=2 where uid=#{uid}
+    </update>
+
+</mapper>

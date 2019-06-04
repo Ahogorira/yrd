@@ -7,9 +7,31 @@
         values(#{loan.money},#{loan.lfq},#{loan.lzt},#{loan.yid},#{loan.uid},,#{loan.sqtime},#{loan.shtime})
     </insert>-->
 
+    <resultMap id="loanFq" type="loan">
+        <id column="lid" property="lid"></id>
+        <result column="money" property="money"></result>
+        <result column="lzt" property="lzt"></result>
+        <result column="yid" property="yid"></result>
+        <result column="uid" property="uid"></result>
+        <result column="sqtime" property="sqtime"></result>
+        <result column="shtime" property="shtime"></result>
+        <association property="ifq">
+            <id column="fqid" property="fqid"></id>
+            <result column="fqkx" property="fqkx"></result>
+            <result column="fqlv" property="fqlv"></result>
+        </association>
+    </resultMap>
 
-    <select id="getLoanBysh" resultType="loan">
-        select * from tb_loan where lzt=2;
+    <select id="getLoanBysh" resultMap="loanFq">
+        select a.*,b.* from tb_loan a,tb_jkfq b where a.lfq=b.fqid and lzt=2;
+    </select>
+
+    <select id="getLoanAndfq" resultType="map">
+        select a.money,a.lzt,a.yid,a.uid,a.sqtime,b.fqkx,b.fqlv from tb_loan a,tb_jkfq b where a.lfq=b.fqid and a.lzt=2;
+    </select>
+
+    <select id="getLoanByUid" resultMap="loanFq">
+        select a.*,b.* from tb_loan a,tb_jkfq b where a.lfq=b.fqid and lzt=2 and a.uid=#{uid};
     </select>
 
 </mapper>

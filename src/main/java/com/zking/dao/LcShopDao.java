@@ -1,5 +1,6 @@
 package com.zking.dao;
 
+import com.zking.model.Jkfq;
 import com.zking.model.LcShop;
 import org.springframework.stereotype.Service;
 
@@ -27,6 +28,7 @@ public interface LcShopDao {
      * @return
      */
     public List<LcShop> getLcShopByLcid(Integer lcid);
+
 
 
 }

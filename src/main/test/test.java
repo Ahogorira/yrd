@@ -8,7 +8,12 @@ import org.quartz.impl.StdSchedulerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import redis.clients.jedis.Jedis;
 
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
+import java.net.URL;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 
@@ -78,5 +83,32 @@ public class test {
         defaultScheduler.start();
     }
 
+    /**
+     * 纯java发送短信接口调用
+     * @param path
+     * @throws Exception
+     */
+    public static void main(String path[]) throws Exception {
+
+        Map<String,Object> map = new HashMap<>();
+        map.put("name","是的");
+        map.put("code","123456");
+        URL u = new URL("http://route.showapi.com/28-1?showapi_appid=90784&mobile=16680913747&content={%22name%22:%22卧槽%22,%22code%22:%2249791%22}&tNum=T170317004265&big_msg=1&showapi_sign=36bb53e6712946d5b8bfd554e602cd17");
+        InputStream in = u.openStream();
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        try {
+            byte buf[] = new byte[1024];
+            int read = 0;
+            while ((read = in .read(buf)) > 0) {
+                out.write(buf, 0, read);
+            }
+        } finally {
+            if ( in != null) {
+                in .close();
+            }
+        }
+        byte b[] = out.toByteArray();
+        System.out.println(new String(b, "utf-8"));
+    }
 
 }

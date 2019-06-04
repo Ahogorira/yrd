@@ -6,7 +6,7 @@ public class Loan implements Serializable {
     private static final long serialVersionUID = 5242732911641712485L;
     private Integer lid;//借款申请id
     private Double money;//借款金额
-    private Integer ifq;//借款分期
+    private Jkfq ifq;//借款分期
     private Integer lzt;//审核状态
     private Integer yid;//审核员工id
     private Integer uid;//用户id
@@ -29,11 +29,11 @@ public class Loan implements Serializable {
         this.money = money;
     }
 
-    public Integer getIfq() {
+    public Jkfq getIfq() {
         return ifq;
     }
 
-    public void setIfq(Integer ifq) {
+    public void setIfq(Jkfq ifq) {
         this.ifq = ifq;
     }
 
